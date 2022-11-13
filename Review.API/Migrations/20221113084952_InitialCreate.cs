@@ -20,7 +20,7 @@ namespace Review.API.Migrations
                 {
                     table.PrimaryKey("PK_Product", x => x.Id);
                 });
-              
+            
             migrationBuilder.CreateTable(
                 name: "Review",
                 columns: table => new
