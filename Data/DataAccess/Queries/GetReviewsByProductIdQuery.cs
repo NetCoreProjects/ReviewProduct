@@ -1,13 +1,13 @@
-﻿using MediatR;
-using Review.API.Common;
-using Review.API.Model;
-using Review.API.Repository;
+﻿using Data.Common;
+using Data.Model;
+using Data.Repository.Interface;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Review.API.DataAccess.Queries
+namespace Data.DataAccess.Queries
 {
     public class GetReviewsByProductIdQuery : IRequest<RequestResult<IEnumerable<ReviewModel>>>
     {

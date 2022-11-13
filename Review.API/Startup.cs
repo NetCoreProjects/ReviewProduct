@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Data.Repository.Implementation;
+using Data.Repository.Interface;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Review.API.DatabaseConfigurations;
-using Review.API.Repository;
-using Review.API.Repository.Class;
-using Review.API.Repository.Interface;
 
 namespace Review.API
 {
@@ -27,9 +26,10 @@ namespace Review.API
         {
             var sqLitePath = Configuration.GetConnectionString("Path");
             services.AddDbContext<RevewProductDbContext>(x => x.UseSqlite($"Data Source={sqLitePath}"));
+            services.AddMediatR(typeof(RevewProductDbContext).Assembly);
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddMediatR(typeof(RevewProductDbContext).Assembly);
+            
             //services.AddMediatR(.Assembly);
             services
                 .AddMvc(a => { a.EnableEndpointRouting = false; })

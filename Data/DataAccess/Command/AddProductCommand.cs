@@ -1,12 +1,12 @@
-﻿using MediatR;
-using Review.API.Common;
-using Review.API.Model;
-using Review.API.Repository.Interface;
+﻿using Data.Common;
+using Data.Model;
+using Data.Repository.Interface;
+using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Review.API.DataAccess.Command
+namespace Data.DataAccess.Command
 {
     public class AddProductCommand : IRequest<RequestResult<Unit>>
     {

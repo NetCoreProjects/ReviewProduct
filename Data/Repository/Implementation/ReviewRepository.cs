@@ -1,10 +1,11 @@
-﻿using Review.API.DatabaseConfigurations;
-using Review.API.Model;
+﻿using Data.Model;
+using Data.Repository.Interface;
+using Review.API.DatabaseConfigurations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Review.API.Repository.Class
+namespace Data.Repository.Implementation
 {
     public class ReviewRepository : IReviewRepository
     {

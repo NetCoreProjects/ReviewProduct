@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Review.API.Model;
+﻿using Data.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Review.API.DatabaseConfigurations
 {

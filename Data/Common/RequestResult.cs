@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Review.API.Common
+namespace Data.Common
 {
     public static class RequestResult
     {

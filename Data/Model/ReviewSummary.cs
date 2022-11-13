@@ -1,4 +1,4 @@
-﻿namespace Review.API.DataAccess.Queries
+﻿namespace Data.DataAccess.Queries
 {
     public class ReviewSummary
     {

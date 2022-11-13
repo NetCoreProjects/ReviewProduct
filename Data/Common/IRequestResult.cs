@@ -1,4 +1,4 @@
-﻿namespace Review.API.Common
+﻿namespace Data.Common
 {
     public interface IRequestResult
     {

@@ -1,12 +1,13 @@
-﻿using MediatR;
-using Review.API.Common;
-using Review.API.Repository;
+﻿using Data.Common;
+using Data.Model;
+using Data.Repository.Interface;
+using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using static Review.API.DataAccess.Command.ReviewForProductModel;
+using static Data.Model.ReviewForProductModel;
 
-namespace Review.API.DataAccess.Command
+namespace Data.DataAccess.Command
 {
     public class AddReviewCommand : IRequest<RequestResult<Unit>>
     {

@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using Data.DataAccess.Command;
+using Data.DataAccess.Queries;
+using Data.Model;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Review.API.DataAccess.Command;
-using Review.API.DataAccess.Queries;
-using Review.API.Model;
 using System;
 using System.Threading.Tasks;
 

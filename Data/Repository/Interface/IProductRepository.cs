@@ -1,8 +1,8 @@
-﻿using Review.API.Model;
+﻿using Data.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Review.API.Repository.Interface
+namespace Data.Repository.Interface
 {
     public interface IProductRepository
     {

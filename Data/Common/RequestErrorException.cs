@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Review.API.Common
+namespace Data.Common
 {
     public class RequestErrorException : Exception
     {

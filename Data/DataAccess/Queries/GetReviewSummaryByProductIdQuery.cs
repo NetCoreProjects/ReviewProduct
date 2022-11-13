@@ -1,12 +1,12 @@
-﻿using MediatR;
-using Review.API.Common;
-using Review.API.Repository;
+﻿using Data.Common;
+using Data.Repository.Interface;
+using MediatR;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Review.API.DataAccess.Queries
+namespace Data.DataAccess.Queries
 {
     public class GetReviewSummaryByProductIdQuery : IRequest<RequestResult<ReviewSummary>>
     {

@@ -1,4 +1,4 @@
-﻿namespace Review.API.Model
+﻿namespace Data.Model
 {
     public class ReviewModel
     {

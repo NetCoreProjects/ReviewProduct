@@ -1,8 +1,8 @@
-﻿using Review.API.Model;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Review.API.DataAccess.Command
+namespace Data.Model
 {
-    public partial class ReviewForProductModel
+    public class ReviewForProductModel
     {
         public int ProductId { get; set; }
         public ScoreValues Score { get; set; }
@@ -20,6 +20,22 @@ namespace Review.API.DataAccess.Command
                 Comment = this.Comment,
                 IsRecommended = this.IsRecommended
             };
+        }
+
+        public enum ScoreValues
+        {
+            [Display(Name = "0")]
+            Zero,
+            [Display(Name = "1")]
+            One,
+            [Display(Name = "2")]
+            Two,
+            [Display(Name = "3")]
+            Three,
+            [Display(Name = "4")]
+            Four,
+            [Display(Name = "5")]
+            Five
         }
     }
 }
