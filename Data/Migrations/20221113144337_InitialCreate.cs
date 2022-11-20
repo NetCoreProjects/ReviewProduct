@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Review.API.Migrations
+namespace Data.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -20,7 +20,7 @@ namespace Review.API.Migrations
                 {
                     table.PrimaryKey("PK_Product", x => x.Id);
                 });
-            
+
             migrationBuilder.CreateTable(
                 name: "Review",
                 columns: table => new
@@ -37,6 +37,22 @@ namespace Review.API.Migrations
                 {
                     table.PrimaryKey("PK_Review", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    userName = table.Column<string>(type: "TEXT", nullable: true),
+                    firsName = table.Column<string>(type: "TEXT", nullable: true),
+                    lastName = table.Column<string>(type: "TEXT", nullable: true),
+                    gender = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -46,6 +62,9 @@ namespace Review.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Review");
+
+            migrationBuilder.DropTable(
+                name: "User");
         }
     }
 }

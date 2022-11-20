@@ -9,8 +9,8 @@ namespace Data.Repository.Implementation
 {
     public class ReviewRepository : IReviewRepository
     {
-        private RevewProductDbContext _dbContext;
-        public ReviewRepository(RevewProductDbContext dbContext)
+        private ReviewProductDbContext _dbContext;
+        public ReviewRepository(ReviewProductDbContext dbContext)
         {
             _dbContext = dbContext;
         }

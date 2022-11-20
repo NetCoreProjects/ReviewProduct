@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Review.API.DatabaseConfigurations;
 
-namespace Review.API.Migrations
+namespace Data.Migrations
 {
-    [DbContext(typeof(RevewProductDbContext))]
-    [Migration("20221113084952_InitialCreate")]
+    [DbContext(typeof(ReviewProductDbContext))]
+    [Migration("20221113144337_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0-preview.5.21301.9");
+                .HasAnnotation("ProductVersion", "5.0.17");
 
-            modelBuilder.Entity("Review.API.Model.ProductModel", b =>
+            modelBuilder.Entity("Data.Model.ProductModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace Review.API.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Review.API.Model.ReviewModel", b =>
+            modelBuilder.Entity("Data.Model.ReviewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,6 +61,29 @@ namespace Review.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Review");
+                });
+
+            modelBuilder.Entity("Data.Model.User", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("firsName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("gender")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("userName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

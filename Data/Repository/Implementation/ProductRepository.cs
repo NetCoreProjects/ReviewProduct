@@ -9,8 +9,8 @@ namespace Data.Repository.Implementation
 {
     public class ProductRepository : IProductRepository
     {
-        private RevewProductDbContext _dbContext;
-        public ProductRepository(RevewProductDbContext dbContext)
+        private ReviewProductDbContext _dbContext;
+        public ProductRepository(ReviewProductDbContext dbContext)
         {
             _dbContext = dbContext;
         }
