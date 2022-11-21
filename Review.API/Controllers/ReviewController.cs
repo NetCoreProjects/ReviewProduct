@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Data.DataAccess.Command;
+using Data.DataAccess.Queries;
+using Data.Model;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Review.API.DataAccess.Command;
-using Review.API.DataAccess.Queries;
 
 namespace Review.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("api/[controller]")]
     public class ReviewController : Controller
