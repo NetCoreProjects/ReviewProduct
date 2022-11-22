@@ -31,29 +31,37 @@ namespace Data.DataAccess.Security
 
             public async Task<RequestResult<AuthUser>> Handle(AuthenticateService request, CancellationToken cancellationToken)
             {
-                var user = await _userRepository
+                try
+                {
+                    var user = await _userRepository
                     .GetUserByUserNameAndPasswordAsync(request.userName, request.password).ConfigureAwait(false);
 
-                if (user == null)
-                {
-                    return null;
+                    if (user == null)
+                    {
+                        return null;
+                    }
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.ASCII.GetBytes(_appSettings.SecretKey);
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new System.Security.Claims.ClaimsIdentity(new Claim[] {
+                                                  new Claim(ClaimTypes.Name, user.id.ToString()),
+                                                  new Claim(ClaimTypes.Version, "v1")
+                                                  }),
+                        Expires = DateTime.UtcNow.AddHours(8),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                    };
+
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+
+                    return RequestResult.Success(user.ToAuthUser(tokenHandler.WriteToken(token)));
                 }
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_appSettings.SecretKey);
-                var tokenDescriptor = new SecurityTokenDescriptor
+                catch
                 {
-                    Subject = new System.Security.Claims.ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.id.ToString()),
-                    new Claim(ClaimTypes.Version, "v1")
-                }),
-                    Expires = DateTime.UtcNow.AddHours(8),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-                };
-
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-
-                return RequestResult.Success(user.ToAuthUser(tokenHandler.WriteToken(token)));
+                    return RequestResult.Fail<AuthUser>(new RequestError("Error occurred while logging in. Please try again later."));
+                }
+                
             }
         }
     }

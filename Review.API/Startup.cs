@@ -26,7 +26,6 @@ namespace Review.API
 
             services.ConfigureAuthentication(Configuration);
             services.InsertDependency();
-            //services.AddMediatR(.Assembly);
             services
                 .AddMvc(a => { a.EnableEndpointRouting = false; })
                 .SetCompatibilityVersion(CompatibilityVersion.Latest);
